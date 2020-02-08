@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dd</title>
+</head>
+<body>
+    <div class="containter">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>  #HAVE NOT TESTED THIS OUT YET!!!!!!!!!!!!!!!!!!!
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <div class="row">
+            <div class="col">           
+                <h1 class="my-5">Registration</h1>
+                <form action='/register' method='POST'>
+                    {% csrf_token %}
+                    <p>First Name <input type="text" name="first_name"/></p>
+                    <p>Last Name <input type="text" name="last_name"/></p>
+                    <p>Email <input type="text" name="email"/></p>
+                    <p>Password <input type="password" name="password"/></p>
+                    <p>Confirm PW <input type="password" name="confirm"/></p>
+                    <input class="btn btn-success" type="submit" value="Register"/>
+                </form>
+            </div>
+            <div class="col">
+                <h1 class="my-5">Login</h1>
+                <form action="/login" method="POST">
+                    {% csrf_token %}
+                    <p>Email <input type="text" name="email"></p>
+                    <p>Password <input type="password" name="password"></p>
+                    <input class="btn btn-success" type="submit" value="Log In">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
